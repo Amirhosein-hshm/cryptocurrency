@@ -52,10 +52,8 @@ app/
   (dashboard)/
     page.tsx               # SSR shell + Suspense/Streaming boundary
     _ChartServer.tsx       # Server Component: fetchAll + precompute → pass to client
-    error.tsx              # Error boundary (Try again / Clear & Retry)
     loading.tsx            # Streaming skeleton
   _components/
-    BreakNext.client.tsx   # Button: “Break next request” (error demo via URL param)
     Chart.client.tsx       # ECharts (client-only; dynamic import)
   layout.tsx
   globals.css
