@@ -11,7 +11,6 @@ The (simulated) API returns **max 100 items per request**; we **efficiently fetc
 - **Aggregation switch (Others)**: `mean`, `sumAll`, `sumPositive`—precomputed for each metric, the client only displays.
 - **Interactive bar chart**: ECharts with dataZoom slider, tooltip, responsive layout, metric/aggregation tabs.
 - **SSR + Streaming**: Page shell streams fast via Suspense; chart data arrives once precomputed.
-- **Error handling demo**: A UI button intentionally breaks the **next** server request so you can see the **error boundary** in action.
 
 ---
 
@@ -83,7 +82,6 @@ postcss.config.js
    - **Worker-pool** (e.g., 8 workers): limited parallelism to avoid overwhelming the server.
    - **Retry with exponential backoff** for transient errors.
    - Optional `throttleMs` between page fetches; optional `keepOrder`.
-   - **Demonstration hook**: `injectFailurePage` to intentionally fail page N (used by the error demo).
 
 3. **Precompute on the server** (`lib/services/summary.ts`)
    - Sort by metric, take **Top N**, aggregate the rest as **Others**.
@@ -103,7 +101,7 @@ postcss.config.js
 - **“Efficiently fetch all (\~5000)”** → `fetchAllCoins` with **worker-pool + retry/backoff**, optional throttle.
 - **“Interactive chart; switch metrics”** → metric tabs (24h / 7d / 30d / 90d) + dataZoom, tooltip.
 - **“Performance awareness”** → server precompute, dynamic import for ECharts, large/progressive series opts, SSR/Streaming.
-- **“UX sensibility”** → readable axes, slider spacing, skeleton loading, error boundary UX.
+- **“UX sensibility”** → readable axes, slider spacing, skeleton loading boundary UX.
 
 ---
 
@@ -121,11 +119,6 @@ postcss.config.js
    - Click `24H / 7D / 30D / 90D`.
    - Click `mean / sumAll / sumPositive`.
    - Use the bottom slider to zoom horizontally.
-
-3. **See error handling**
-   - Click **“Break next request”**.
-   - The next server render intentionally fails (page 3), and you’ll land in the custom **error boundary**.
-   - Click **Clear & Retry** to remove the flag and recover.
 
 ---
 
