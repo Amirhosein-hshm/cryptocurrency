@@ -1,8 +1,9 @@
 import { ChartSkeleton } from '../_components/ChartSkeleton';
+import { Suspense } from 'react';
+
 export const revalidate = 0;
 export const dynamic = 'force-dynamic';
 
-import { Suspense } from 'react';
 import ChartServer from './_ChartServer';
 
 export default async function Page() {

@@ -27,7 +27,6 @@ export function buildTopNSeries(
   } else if (othersAgg === 'sumAll') {
     othersValue = tail.reduce((s, d) => s + d[metric], 0);
   } else {
-    // mean
     othersValue = tail.reduce((s, d) => s + d[metric], 0) / tail.length;
   }
 
@@ -45,4 +44,15 @@ export function precomputeAllMetrics(
   ) as ISeriesByMetric;
 
   return { top: N, seriesByMetric };
+}
+
+export function precomputeAllAggs(
+  data: IDataDTO[],
+  N = 50,
+): Record<OthersAggregation, { top: number; seriesByMetric: ISeriesByMetric }> {
+  return {
+    mean: precomputeAllMetrics(data, N, 'mean'),
+    sumAll: precomputeAllMetrics(data, N, 'sumAll'),
+    sumPositive: precomputeAllMetrics(data, N, 'sumPositive'),
+  };
 }
