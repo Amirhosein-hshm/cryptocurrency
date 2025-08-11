@@ -36,7 +36,11 @@ export default function Chart({ precomputedByAgg, defaultMetric, defaultAgg, top
         type: 'value',
         name: metric,
         nameLocation: 'middle',
-        nameGap: 38,
+        nameGap: 40,
+        nameRotate: 90,
+        axisLabel: {
+          inside: false,
+        },
       },
       series: [
         {

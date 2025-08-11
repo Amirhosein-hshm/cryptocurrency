@@ -13,7 +13,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <nav className="border-b bg-white">
           <div className="container mx-auto p-4 flex items-center justify-between">
             <span className="font-semibold">Crypto Dashboard</span>
-            <span className="text-xs text-zinc-500">Next 15 • SSR • Streaming</span>
           </div>
         </nav>
         {children}
